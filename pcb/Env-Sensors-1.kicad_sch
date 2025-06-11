@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "ESPHome Parking Assistant")
-		(date "2025-04-10")
-		(rev "-")
+		(date "2025-04-18")
+		(rev "A")
 		(company "Mike Lawrence")
 	)
 	(lib_symbols
@@ -1399,6 +1399,18 @@
 		)
 	)
 	(rectangle
+		(start 193.04 101.6)
+		(end 241.3 137.16)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 28942258-01e3-4493-99a7-470a766deff9)
+	)
+	(rectangle
 		(start 193.04 38.1)
 		(end 241.3 96.52)
 		(stroke
@@ -1520,6 +1532,19 @@
 		)
 		(uuid "2d20753b-9ead-480f-b7b5-09428619a5bf")
 	)
+	(text "I^{2}C2 Pullup"
+		(exclude_from_sim no)
+		(at 216.154 103.632 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(thickness 0.381)
+				(bold yes)
+			)
+			(justify top)
+		)
+		(uuid "573e4abb-0b93-4383-b9fe-7dfa8ae222b6")
+	)
 	(text "Temperature Humidity \nSensor"
 		(exclude_from_sim no)
 		(at 75.184 40.132 0)
@@ -1547,7 +1572,7 @@
 		)
 		(uuid "7bda6e6b-e43a-49e2-8f4d-b0880526e8cb")
 	)
-	(text "Discrete Sensor Set"
+	(text "Bath or Kitchen Set"
 		(exclude_from_sim no)
 		(at 103.632 27.432 0)
 		(effects
@@ -1609,7 +1634,7 @@
 		)
 		(uuid "fa50575a-32b6-42a3-8752-01a91bfbc3c2")
 	)
-	(text "Notes\n1. Recommend one of two configurations.\n   A. SEN66.\n   B. SHT45, SCD41 and SGP41.\n2. Temperature & Humidity Sensor can be SHT40 , SHT41, or SHT45 for increasing accuracy.\n3. CO^{2} (SCD40 or SCD41) measures CO^{2}, Temperature and Humidity.\n4. Air Quality Sensor (SGP40 or SGP41) measures VOC, NO_{X}. These sensors are self heating\n   and not recommended for measuring room temperature.\n5. SEN66 measures Temperature, Humidity, CO^{2}, VOC, NO_{X} and PM."
+	(text "Notes\n1. Recommend one of two configurations.\n   A. SEN66.\n   B. SHT45, SCD41 and SGP41 for Bath or Kitchen.\n2. Temperature & Humidity Sensor can be SHT40 , SHT41, or SHT45 for increasing accuracy.\n3. CO^{2} (SCD40 or SCD41) measures CO^{2}, Temperature and Humidity.\n4. Air Quality Sensor (SGP40 or SGP41) measures VOC, NO_{X}. These sensors are self heating\n   and not recommended for measuring room temperature.\n5. SEN66 measures Temperature, Humidity, CO^{2}, VOC, NO_{X} and PM."
 		(exclude_from_sim no)
 		(at 25.4 165.1 0)
 		(effects
@@ -1685,6 +1710,12 @@
 		(uuid "5a9bb170-a41c-41af-acaa-7e6ff479da9c")
 	)
 	(junction
+		(at 220.98 115.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6add6930-b345-4ddc-b513-df41d4c8ee2a")
+	)
+	(junction
 		(at 74.93 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1707,6 +1738,16 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "feda52c5-e77a-4935-823a-7c88f74d4e61")
+	)
+	(wire
+		(pts
+			(xy 215.9 125.73) (xy 215.9 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0471cfa0-5c91-4fc2-acf6-e578ac3968a3")
 	)
 	(wire
 		(pts
@@ -1737,6 +1778,16 @@
 			(type default)
 		)
 		(uuid "08f066d1-5fb4-41b5-842c-d8a6acb112aa")
+	)
+	(wire
+		(pts
+			(xy 226.06 118.11) (xy 226.06 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b4b3f23-c24e-4fa6-9963-72311207b000")
 	)
 	(wire
 		(pts
@@ -1787,6 +1838,26 @@
 			(type default)
 		)
 		(uuid "0f1c7d58-a795-42e7-858d-ce24ce42bc81")
+	)
+	(wire
+		(pts
+			(xy 220.98 113.03) (xy 220.98 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1634698d-396c-4f5c-8682-8dbf99dd7772")
+	)
+	(wire
+		(pts
+			(xy 226.06 125.73) (xy 226.06 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "175760cc-371d-4c0a-8543-0a3887b042be")
 	)
 	(wire
 		(pts
@@ -1867,6 +1938,16 @@
 			(type default)
 		)
 		(uuid "2bc5bc39-9f4e-4a8f-bb9f-c275f995dd72")
+	)
+	(wire
+		(pts
+			(xy 220.98 115.57) (xy 215.9 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bffb48b-8aaf-494a-82a7-8af3116698eb")
 	)
 	(wire
 		(pts
@@ -2030,6 +2111,16 @@
 	)
 	(wire
 		(pts
+			(xy 215.9 115.57) (xy 215.9 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e909a9a-a365-4882-8cd8-5ef5def53d5b")
+	)
+	(wire
+		(pts
 			(xy 140.97 86.36) (xy 151.13 86.36)
 		)
 		(stroke
@@ -2040,6 +2131,16 @@
 	)
 	(wire
 		(pts
+			(xy 226.06 133.35) (xy 200.66 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62bbf269-da28-45d0-866a-4dfd523079f4")
+	)
+	(wire
+		(pts
 			(xy 234.95 81.28) (xy 234.95 83.82)
 		)
 		(stroke
@@ -2047,6 +2148,16 @@
 			(type default)
 		)
 		(uuid "634abf4e-3939-4f05-b2ed-7758db774883")
+	)
+	(wire
+		(pts
+			(xy 215.9 128.27) (xy 200.66 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63d11e5f-613c-486a-8236-3f6155fdb5a3")
 	)
 	(wire
 		(pts
@@ -2117,6 +2228,16 @@
 			(type default)
 		)
 		(uuid "85988bfe-38c4-43f4-b97a-88d6436e8301")
+	)
+	(wire
+		(pts
+			(xy 226.06 115.57) (xy 220.98 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8aa7a9c7-8c0a-4330-894f-18fdb32c15d2")
 	)
 	(wire
 		(pts
@@ -2348,7 +2469,7 @@
 		)
 		(uuid "f8087643-2169-46ab-a611-d92cc64582e9")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
 		(at 57.15 115.57 180)
 		(effects
@@ -2359,7 +2480,7 @@
 		)
 		(uuid "0c6b3a2b-d202-4930-939f-ee1dd0652496")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL1"
 		(shape input)
 		(at 115.57 76.2 180)
 		(effects
@@ -2370,7 +2491,7 @@
 		)
 		(uuid "4ecf3ae3-988c-47ba-8648-3b9831b26dbe")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL1"
 		(shape input)
 		(at 57.15 118.11 180)
 		(effects
@@ -2381,7 +2502,7 @@
 		)
 		(uuid "504ad272-0644-445e-bd5e-be474de1cb18")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
 		(at 115.57 73.66 180)
 		(effects
@@ -2392,7 +2513,7 @@
 		)
 		(uuid "5643ab91-55a7-431f-9947-5250d13ff9b8")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA2"
 		(shape bidirectional)
 		(at 200.66 64.77 180)
 		(effects
@@ -2403,7 +2524,29 @@
 		)
 		(uuid "66390418-2659-4502-b640-0e9d4973fb9e")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL2"
+		(shape output)
+		(at 200.66 133.35 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "71f203da-53c8-4dff-896f-152d21f17d29")
+	)
+	(hierarchical_label "SDA2"
+		(shape bidirectional)
+		(at 200.66 128.27 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "791d9318-3b7c-4d80-9c2b-92e4c09c3fc0")
+	)
+	(hierarchical_label "SCL1"
 		(shape input)
 		(at 57.15 66.04 180)
 		(effects
@@ -2414,7 +2557,7 @@
 		)
 		(uuid "a54ec659-e8e6-4006-ac1f-771a5bc6a39d")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL2"
 		(shape input)
 		(at 200.66 67.31 180)
 		(effects
@@ -2425,7 +2568,7 @@
 		)
 		(uuid "e541b8dc-0b9f-47a6-a3c3-95b35ccb74e5")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
 		(at 57.15 63.5 180)
 		(effects
@@ -2439,21 +2582,6 @@
 	(rule_area
 		(polyline
 			(pts
-				(xy 43.18 31.75) (xy 166.37 31.75) (xy 165.735 142.24) (xy 42.545 142.24)
-			)
-			(stroke
-				(width 0)
-				(type dash)
-			)
-			(fill
-				(type none)
-			)
-			(uuid 250b5e9f-0612-4925-9049-586e96b30b7e)
-		)
-	)
-	(rule_area
-		(polyline
-			(pts
 				(xy 186.69 31.75) (xy 247.65 31.75) (xy 247.65 142.24) (xy 186.69 142.24)
 			)
 			(stroke
@@ -2463,7 +2591,22 @@
 			(fill
 				(type none)
 			)
-			(uuid cce94869-4f25-4945-bc98-5119e49334e3)
+			(uuid 7e2b79fd-2360-45df-ac34-376a42208bcc)
+		)
+	)
+	(rule_area
+		(polyline
+			(pts
+				(xy 43.18 31.75) (xy 166.37 31.75) (xy 165.735 142.24) (xy 42.545 142.24)
+			)
+			(stroke
+				(width 0)
+				(type dash)
+			)
+			(fill
+				(type none)
+			)
+			(uuid a415a8f0-a297-4cc6-9e53-225ac3d573c3)
 		)
 	)
 	(symbol
@@ -2710,6 +2853,94 @@
 			(project "ESPHome-Indoor-Multi-Sensor"
 				(path "/e74956a0-c576-42e7-be96-7ce5c3135988/c3a2a756-5acc-4a4f-a61d-07af630c1ef7"
 					(reference "C34")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 226.06 121.92 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "2662cb82-d9a5-4fee-8065-7ff84c705fc5")
+		(property "Reference" "R22"
+			(at 224.536 121.158 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5.1KΩ"
+			(at 224.536 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 227.838 121.92 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 226.06 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, 5.1KΩ, 62.5mW, 1%, 0402"
+			(at 226.06 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay / Dale"
+			(at 226.06 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CRCW04025K10FKED"
+			(at 226.06 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d62d3a8b-7345-43b1-914c-5bfb098e215f")
+		)
+		(pin "2"
+			(uuid "3fb395a2-dc10-4677-85cb-32aa17084a1d")
+		)
+		(instances
+			(project "ESPHome-Indoor-Multi-Sensor"
+				(path "/e74956a0-c576-42e7-be96-7ce5c3135988/c3a2a756-5acc-4a4f-a61d-07af630c1ef7"
+					(reference "R22")
 					(unit 1)
 				)
 			)
@@ -3390,6 +3621,94 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 215.9 121.92 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "8b04ab45-8719-4662-bac5-b8ce64536b47")
+		(property "Reference" "R23"
+			(at 214.376 121.158 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5.1KΩ"
+			(at 214.376 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 217.678 121.92 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.9 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, 5.1KΩ, 62.5mW, 1%, 0402"
+			(at 215.9 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay / Dale"
+			(at 215.9 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CRCW04025K10FKED"
+			(at 215.9 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4994b7b7-6815-42cc-91e1-e8866db6a00d")
+		)
+		(pin "2"
+			(uuid "77753923-c4e9-41c7-83b5-9e20d8629bb4")
+		)
+		(instances
+			(project "ESPHome-Indoor-Multi-Sensor"
+				(path "/e74956a0-c576-42e7-be96-7ce5c3135988/c3a2a756-5acc-4a4f-a61d-07af630c1ef7"
+					(reference "R23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3VA")
 		(at 74.93 104.14 0)
 		(unit 1)
@@ -3933,6 +4252,71 @@
 			(project "ESPHome-Indoor-Multi-Sensor"
 				(path "/e74956a0-c576-42e7-be96-7ce5c3135988/c3a2a756-5acc-4a4f-a61d-07af630c1ef7"
 					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3VA")
+		(at 220.98 113.03 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d02f3d9e-c5fe-4ef7-ab3e-341288a07c12")
+		(property "Reference" "#PWR082"
+			(at 220.98 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3VA"
+			(at 220.98 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 220.98 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 220.98 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3VA\""
+			(at 220.98 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "832f9df3-0ed5-4068-acc3-4c3a4c2dc291")
+		)
+		(instances
+			(project "ESPHome-Indoor-Multi-Sensor"
+				(path "/e74956a0-c576-42e7-be96-7ce5c3135988/c3a2a756-5acc-4a4f-a61d-07af630c1ef7"
+					(reference "#PWR082")
 					(unit 1)
 				)
 			)

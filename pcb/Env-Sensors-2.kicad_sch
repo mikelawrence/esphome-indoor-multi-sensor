@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "ESPHome Parking Assistant")
-		(date "2025-04-10")
-		(rev "-")
+		(date "2025-04-18")
+		(rev "A")
 		(company "Mike Lawrence")
 	)
 	(lib_symbols
@@ -3282,7 +3282,7 @@
 		)
 		(uuid "c84be404-479f-4c25-b70c-382f8bf87247")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
 		(at 54.61 100.33 180)
 		(effects
@@ -3293,7 +3293,7 @@
 		)
 		(uuid "4daf4949-8a62-49a9-b17d-28c9c78d5b24")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL1"
 		(shape input)
 		(at 54.61 102.87 180)
 		(effects
@@ -3304,7 +3304,7 @@
 		)
 		(uuid "7d84a6a0-18b1-42b4-8ed6-93e0ecd86f32")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL1"
 		(shape input)
 		(at 233.68 60.96 0)
 		(effects
@@ -3315,7 +3315,7 @@
 		)
 		(uuid "a8a88640-2eb2-4594-abae-6774739da7d1")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
 		(at 55.88 49.53 180)
 		(effects
@@ -3326,7 +3326,7 @@
 		)
 		(uuid "c43efab1-4c20-4e48-b113-9e251cf768aa")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL1"
 		(shape input)
 		(at 55.88 52.07 180)
 		(effects
@@ -3337,7 +3337,7 @@
 		)
 		(uuid "d568ce65-4999-4327-96a4-dcb8ee52646c")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
 		(at 233.68 63.5 0)
 		(effects

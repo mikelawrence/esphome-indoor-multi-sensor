@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "ESPHome Parking Assistant")
-		(date "2025-04-10")
-		(rev "-")
+		(date "2025-04-18")
+		(rev "A")
 		(company "Mike Lawrence")
 	)
 	(lib_symbols
@@ -3651,8 +3651,8 @@
 		(uuid 81abf27f-df7d-4ce6-9de0-af891605cb6d)
 	)
 	(rectangle
-		(start 88.9 115.57)
-		(end 120.65 158.75)
+		(start 120.65 115.57)
+		(end 88.9 158.75)
 		(stroke
 			(width 0)
 			(type default)
@@ -3708,9 +3708,9 @@
 		)
 		(uuid "97a86e61-d87c-4d7c-ad55-0c414c972909")
 	)
-	(text "I^{2}C Pullup"
+	(text "I^{2}C1 Pullup"
 		(exclude_from_sim no)
-		(at 105.41 117.348 0)
+		(at 104.14 117.348 0)
 		(effects
 			(font
 				(size 2.54 2.54)
@@ -3961,7 +3961,7 @@
 		(uuid "e48b0898-eafa-4b1a-940e-fbb43f137414")
 	)
 	(junction
-		(at 102.87 129.54)
+		(at 106.68 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e4a4a76f-5655-43a4-b2cd-d31a16a5b133")
@@ -3971,10 +3971,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fd95759d-e5ac-4986-8c81-4b02757f36c4")
-	)
-	(no_connect
-		(at 26.67 22.86)
-		(uuid "03e937ee-f5dc-48a5-b0f5-2c81506a9ad8")
 	)
 	(no_connect
 		(at 58.42 62.23)
@@ -3997,28 +3993,8 @@
 		(uuid "2ce55987-fc3d-41d2-ad10-c404aeeefe8d")
 	)
 	(no_connect
-		(at 88.9 49.53)
-		(uuid "2d4d88c7-0afb-4d61-b8ad-3fc998fb45ff")
-	)
-	(no_connect
 		(at 88.9 90.17)
 		(uuid "356359c9-3354-4c19-8509-1d8327d4c507")
-	)
-	(no_connect
-		(at 20.32 24.13)
-		(uuid "44f0cab7-d2bb-4599-b54c-66b55f41ddbc")
-	)
-	(no_connect
-		(at 20.32 19.05)
-		(uuid "6076b03d-b90b-4eaf-a5fe-e18768120794")
-	)
-	(no_connect
-		(at 24.13 22.86)
-		(uuid "64ace27d-8271-41b8-b8af-6d29bfcf6611")
-	)
-	(no_connect
-		(at 21.59 22.86)
-		(uuid "6d492867-5d30-475e-9692-bb9a7ac7d727")
 	)
 	(no_connect
 		(at 58.42 90.17)
@@ -4035,18 +4011,6 @@
 	(no_connect
 		(at 58.42 59.69)
 		(uuid "d070a0a9-c4a8-4802-a7a1-91428ac6a280")
-	)
-	(no_connect
-		(at 88.9 52.07)
-		(uuid "d572c523-89a0-488a-9443-493a3213326f")
-	)
-	(no_connect
-		(at 20.32 21.59)
-		(uuid "d61deeef-aa20-4d27-a694-c5e16d323157")
-	)
-	(no_connect
-		(at 20.32 16.51)
-		(uuid "f3a4b36d-3215-4529-bffe-119a980f6816")
 	)
 	(wire
 		(pts
@@ -4110,7 +4074,7 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 129.54) (xy 107.95 129.54)
+			(xy 106.68 129.54) (xy 101.6 129.54)
 		)
 		(stroke
 			(width 0)
@@ -4170,7 +4134,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 146.05) (xy 111.76 146.05)
+			(xy 101.6 146.05) (xy 97.79 146.05)
 		)
 		(stroke
 			(width 0)
@@ -4180,7 +4144,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 139.7) (xy 107.95 146.05)
+			(xy 101.6 139.7) (xy 101.6 146.05)
 		)
 		(stroke
 			(width 0)
@@ -4570,7 +4534,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 129.54) (xy 102.87 129.54)
+			(xy 111.76 129.54) (xy 106.68 129.54)
 		)
 		(stroke
 			(width 0)
@@ -4640,7 +4604,7 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 127) (xy 102.87 129.54)
+			(xy 106.68 127) (xy 106.68 129.54)
 		)
 		(stroke
 			(width 0)
@@ -4710,7 +4674,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 129.54) (xy 107.95 132.08)
+			(xy 101.6 129.54) (xy 101.6 132.08)
 		)
 		(stroke
 			(width 0)
@@ -4940,7 +4904,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 151.13) (xy 111.76 151.13)
+			(xy 111.76 151.13) (xy 97.79 151.13)
 		)
 		(stroke
 			(width 0)
@@ -5080,7 +5044,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 139.7) (xy 97.79 151.13)
+			(xy 111.76 139.7) (xy 111.76 151.13)
 		)
 		(stroke
 			(width 0)
@@ -5230,6 +5194,16 @@
 	)
 	(wire
 		(pts
+			(xy 88.9 49.53) (xy 102.87 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db5bfc39-f857-4666-9af2-574954c3e8ee")
+	)
+	(wire
+		(pts
 			(xy 260.35 120.65) (xy 260.35 137.16)
 		)
 		(stroke
@@ -5300,13 +5274,23 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 132.08) (xy 97.79 129.54)
+			(xy 111.76 132.08) (xy 111.76 129.54)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "f8a28b86-b940-4006-88a0-9cc7a3f6922e")
+	)
+	(wire
+		(pts
+			(xy 88.9 52.07) (xy 102.87 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa05a8d3-490d-4ee1-bad3-064b0edb9bc0")
 	)
 	(wire
 		(pts
@@ -5809,7 +5793,7 @@
 		)
 		(uuid "16859298-c1c5-476d-b60f-46c3967a548d")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL1"
 		(shape output)
 		(at 102.87 92.71 0)
 		(effects
@@ -5842,7 +5826,7 @@
 		)
 		(uuid "346263d2-e678-4106-95ab-773b1859cddf")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
 		(at 102.87 95.25 0)
 		(effects
@@ -5852,6 +5836,17 @@
 			(justify left)
 		)
 		(uuid "42e0d835-f9c8-4986-ade6-8e6b12ae0c36")
+	)
+	(hierarchical_label "SCL2"
+		(shape output)
+		(at 102.87 52.07 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "493b1095-a0b7-4461-a69f-f61b250ab2de")
 	)
 	(hierarchical_label "LD24X0_RX"
 		(shape output)
@@ -5897,14 +5892,14 @@
 		)
 		(uuid "884fe3f9-5ec1-4787-97ac-e28767cfeed4")
 	)
-	(hierarchical_label "SCL"
+	(hierarchical_label "SCL1"
 		(shape output)
-		(at 111.76 151.13 0)
+		(at 97.79 151.13 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "b1b13b43-4aff-478b-b598-43a9255b80a4")
 	)
@@ -5918,6 +5913,17 @@
 			(justify right)
 		)
 		(uuid "bea673e0-fab7-481a-85f1-0761a9743b1d")
+	)
+	(hierarchical_label "SDA2"
+		(shape bidirectional)
+		(at 102.87 49.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "cebcf46f-39b9-4c91-9cdb-18fafcfaa4bc")
 	)
 	(hierarchical_label "SEN0609_RX"
 		(shape output)
@@ -5941,14 +5947,14 @@
 		)
 		(uuid "de2fe503-c3d9-4939-8e46-0c954543c99d")
 	)
-	(hierarchical_label "SDA"
+	(hierarchical_label "SDA1"
 		(shape bidirectional)
-		(at 111.76 146.05 0)
+		(at 97.79 146.05 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "e72ad1c2-9350-4e44-9f5a-c0bb02f33f21")
 	)
@@ -7119,7 +7125,8 @@
 	)
 	(symbol
 		(lib_id "power:+3.3VA")
-		(at 102.87 127 0)
+		(at 106.68 127 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7127,7 +7134,7 @@
 		(dnp no)
 		(uuid "3c74ede6-48df-4027-847f-4597ade05544")
 		(property "Reference" "#PWR015"
-			(at 102.87 130.81 0)
+			(at 106.68 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7136,7 +7143,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 102.87 123.19 0)
+			(at 106.68 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7144,7 +7151,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 102.87 127 0)
+			(at 106.68 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7153,7 +7160,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 102.87 127 0)
+			(at 106.68 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7162,7 +7169,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3VA\""
-			(at 102.87 127 0)
+			(at 106.68 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7278,15 +7285,16 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 97.79 135.89 0)
+		(at 111.76 135.89 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "47c299ae-8d49-47d6-a1f4-11517bdc995e")
 		(property "Reference" "R9"
-			(at 99.314 135.128 0)
+			(at 110.236 135.128 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7294,8 +7302,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "DNP"
-			(at 99.314 137.16 0)
+		(property "Value" "5.1KΩ"
+			(at 110.236 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7304,7 +7312,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 96.012 135.89 90)
+			(at 113.538 135.89 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7313,7 +7321,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 97.79 135.89 0)
+			(at 111.76 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7321,8 +7329,26 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, Do Not Populate, 0402"
-			(at 97.79 135.89 0)
+		(property "Description" "Resistor, 5.1KΩ, 62.5mW, 1%, 0402"
+			(at 111.76 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay / Dale"
+			(at 111.76 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CRCW04025K10FKED"
+			(at 111.76 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7660,15 +7686,16 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 107.95 135.89 0)
+		(at 101.6 135.89 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "6b79c00f-38d5-4021-87f3-aaa8001a9448")
 		(property "Reference" "R8"
-			(at 109.474 135.128 0)
+			(at 100.076 135.128 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7676,8 +7703,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "DNP"
-			(at 109.474 137.16 0)
+		(property "Value" "5.1KΩ"
+			(at 100.076 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7686,7 +7713,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 106.172 135.89 90)
+			(at 103.378 135.89 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7695,7 +7722,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 107.95 135.89 0)
+			(at 101.6 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7703,8 +7730,26 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, Do Not Populate, 0402"
-			(at 107.95 135.89 0)
+		(property "Description" "Resistor, 5.1KΩ, 62.5mW, 1%, 0402"
+			(at 101.6 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay / Dale"
+			(at 101.6 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CRCW04025K10FKED"
+			(at 101.6 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)

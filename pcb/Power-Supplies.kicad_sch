@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "ESPHome Parking Assistant")
-		(date "2025-04-10")
-		(rev "-")
+		(date "2025-04-18")
+		(rev "A")
 		(company "Mike Lawrence")
 	)
 	(lib_symbols
