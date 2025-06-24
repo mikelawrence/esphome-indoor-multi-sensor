@@ -27,7 +27,7 @@ substitutions:
   # INA2XX Configuration
   INA2XX_output_rate: "60s"
   # Automatically controlled Vent
-  vent_ha_entity: fan.vent_id
+  vent_ha_entity: "fan.vent_id"
   vent_use_humidity: "true"
   vent_use_co2: "true"
   vent_min_on_time: "15"
