@@ -1,6 +1,9 @@
 name: CI
 
 on:
+  push:
+    branches:
+      - dev
   pull_request:
     paths:
       - '*.yaml'
@@ -32,10 +35,9 @@ jobs:
           - sensor-pkg-b-ld2450-stsz-esp32-s3
         #### Modify above here to match your project ####
 
-        esphome-version:
-          - stable
-          - beta
-          - dev
+        esphome-version: latest
+
+
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
