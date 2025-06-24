@@ -121,12 +121,12 @@ script:
           on_time_seconds = 0.0;
         }
         // compute conditions
-        bool humidity_is_high = hum - hum_long_avg >= ${vent_hum_on_trigger};
-        bool humidity_is_low = (hum - hum_long_avg <= ${vent_hum_off_trigger})
-          && (hum_short_avg - hum_long_avg <= ${vent_hum_off_trigger});
+        bool humidity_is_high = (hum - hum_long_avg >= ${vent_hum_on_trigger}) && ${vent_use_humidity};
+        bool humidity_is_low = ((hum - hum_long_avg <= ${vent_hum_off_trigger})
+          && (hum_short_avg - hum_long_avg <= ${vent_hum_off_trigger})) || ${vent_use_humidity};
         bool vent_on_min_time = on_time_seconds >= static_cast<float>(${vent_min_on_time} * 60);
-        bool co2_is_high = co2_value >= ${vent_co2_on_trigger};
-        bool co2_is_low = co2_value <= ${vent_co2_off_trigger};
+        bool co2_is_high = co2_value >= ${vent_co2_on_trigger} && ${vent_use_co2};
+        bool co2_is_low = co2_value <= ${vent_co2_off_trigger} || ${vent_use_co2};
         // State Machine
         switch (state) {
         // Idle State
