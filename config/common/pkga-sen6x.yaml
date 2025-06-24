@@ -1,0 +1,129 @@
+# PACKAGE A
+#   Adds SEN66 sensors:
+#     Temperature, Humidity, Carbon Dioxide (CO₂),
+#     Volatile Organic Compounds (VOC), Nitrous Oxides (NOx) and
+#     Particulate Matter (PM)
+#   Not compatible with PACKAGE B packages
+i2c:
+  - id: i2c2_bus
+    sda: GPIO43
+    scl: GPIO44
+    frequency: 400kHz
+    scan: true
+
+number:
+  - platform: template
+    id: co2_forced_cal_value
+    name: "CO₂ Calibration Value"
+    device_class: carbon_dioxide
+    entity_category: CONFIG
+    optimistic: true
+    max_value: 1200
+    min_value: 400
+    step: 1
+    initial_value: 420
+    set_action:
+      - delay: 1s
+
+button:
+  - platform: template
+    name: "Start Fan Auto Clean"
+    entity_category: CONFIG
+    on_press:
+      - sen5x.start_fan_autoclean: sen66_sensor
+  - platform: template
+    name: "Activate SHT Heater"
+    entity_category: CONFIG
+    on_press:
+      - sen5x.activate_heater: sen66_sensor
+  - platform: template
+    name: "CO₂ Calibrate"
+    entity_category: CONFIG
+    on_press:
+      - sen5x.perform_forced_co2_calibration:
+          value: !lambda |-
+            float value = id(co2_forced_cal_value).state;
+            return value;
+          id: sen66_sensor
+
+sensor:
+  - platform: sen5x
+    id: sen66_sensor
+    i2c_id: i2c2_bus
+    address: 0x6B
+    update_interval: 1s
+    setup_priority: -400
+    model: SEN66
+    store_baseline: true
+    temperature:
+      name: "Temperature"
+      id: temperature
+      accuracy_decimals: 2
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - offset: ${sen6x_temperature_offset}
+        - throttle_average: ${sen6x_output_rate}
+    humidity:
+      name: "Humidity"
+      id: humidity
+      accuracy_decimals: 2
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - offset: ${sen6x_humidity_offset}
+        - throttle_average: ${sen6x_output_rate}
+    pm_1_0:
+      name: "PM <1µm Weight concentration"
+      id: pm_1_0
+      accuracy_decimals: 2
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - throttle_average: ${sen6x_output_rate}
+    pm_2_5:
+      name: "PM <2.5µm Weight concentration"
+      id: pm_2_5
+      accuracy_decimals: 2
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - throttle_average: ${sen6x_output_rate}
+    pm_4_0:
+      name: "PM <4µm Weight concentration"
+      id: pm_4_0
+      accuracy_decimals: 2
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - throttle_average: ${sen6x_output_rate}
+    pm_10_0:
+      name: "PM <10µm Weight concentration"
+      id: pm_10_0
+      accuracy_decimals: 2
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - throttle_average: ${sen6x_output_rate}
+    co2:
+      name: "CO₂"
+      auto_self_calibration: false
+      accuracy_decimals: 0
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - throttle_average: ${sen6x_output_rate}
+    nox:
+      name: "NOx"
+      accuracy_decimals: 0
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - throttle_average: ${sen6x_output_rate}
+    voc:
+      name: "VOC"
+      accuracy_decimals: 0
+      filters:
+        - skip_initial: 300
+        - filter_out: NAN
+        - throttle_average: ${sen6x_output_rate}

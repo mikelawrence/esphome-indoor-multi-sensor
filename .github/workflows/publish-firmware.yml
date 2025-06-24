@@ -1,0 +1,40 @@
+name: Publish Firmware
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build-firmware:
+    name: Build Firmware
+    uses: esphome/workflows/.github/workflows/build.yml@2025.4.0
+    with:
+      #### Modify below here to match your project ####
+      files: |
+        config/sensor-pkg-a-c4001-esp32-s3.factory.yaml
+        config/sensor-pkg-a-ld2410-esp32-s3.factory.yaml
+        config/sensor-pkg-a-ld2450-mtmz-esp32-s3.factory.yaml
+        config/sensor-pkg-a-ld2450-stsz-esp32-s3.factory.yaml
+        config/sensor-pkg-b-c4001-esp32-s3.factory.yaml
+        config/sensor-pkg-b-ld2410-esp32-s3.factory.yaml
+        config/sensor-pkg-b-ld2450-mtmz-esp32-s3.factory.yaml
+        config/sensor-pkg-b-ld2450-stsz-esp32-s3.factory.yaml
+
+      esphome-version: latest
+      # combined-name: project-template
+      #### Modify above here to match your project ####
+
+      release-summary: ${{ github.event.release.body }}
+      release-url: ${{ github.event.release.html_url }}
+      release-version: ${{ github.event.release.tag_name }}
+
+  upload-to-release:
+    name: Upload to Release
+    uses: esphome/workflows/.github/workflows/upload-to-gh-release.yml@2025.4.0
+    needs:
+      - build-firmware
+    with:
+      version: ${{ github.event.release.tag_name }}

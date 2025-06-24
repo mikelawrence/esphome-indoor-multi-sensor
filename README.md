@@ -21,7 +21,7 @@ I settled on the following characteristics:
 * Sensirion SEN66 All-in-One (Package A)
   - Temperature
   - Humidity
-  - Particulate Matter (PM)
+  - Particulate Matter (PM) 
   - CO₂
   - Volatile Organic Compound (VOC)
   - Nitrogen Oxide (NOX)
@@ -38,7 +38,7 @@ I settled on the following characteristics:
 
 ## Status
 * **Rev -** Has been fabricated and tested. I had JLCPCB fabricate the boards and I self assembled using a Home-Brew reflow oven by [Whizoo Controleo3](https://whizoo.com/). All circuits have been tested and found to be operational. 
-* **Rev A** There was an issue with signal integrity on the I2C bus when communicating with the SEN66. To fix the problem I added stronger pullups and a new and dedicated I2C bus to the SEN66. Thus Rev A was born. I have not fabricate Rev A boards since I still have 6 Rev - boards but the changes are minor and should be fine. Please let me know if you built Rev A and how it went. 
+* **Rev A** There was an issue with signal integrity on the I2C bus when communicating with the SEN66. To fix the problem I added stronger pullups and a new and dedicated I2C bus to the SEN66. Thus Rev A was born. I have not fabricated Rev A boards since I still have 6 Rev - boards left but the changes are minor and should be fine. Please let me know if you built Rev A and how it went.
 
 ## Design Decisions
 ### ESP32 and ESPHome
@@ -70,7 +70,7 @@ The SEN66 takes up a lot of space so a small speaker is necessary. I choose a fl
 I threw in the microphone to measure sound levels. The intent is listen for noise as additional presence detection.
 
 #### Power and Energy Monitor
-The [INA228](https://www.ti.com/lit/ds/symlink/ina228.pdf) power and energy monitor can give instantaneous readings of voltage, current and power but it also measures energy over time (WHr). 
+The [INA228](https://www.ti.com/lit/ds/symlink/ina228.pdf) power and energy monitor can give instantaneous readings of voltage, current and power but it also measures energy over time (WHr).
 
 ### USB-C Power
 I'm not using USB-C Power Delivery but I am expecting 5V @ 3A which is readily available if you have the right USB-C Power Brick. The PCB has the appropriate resistors on the CC pins which will request 5V @ 3A from a standard USB-C Power Brick. Testing shows slightly less than 1W for the Package A version and slightly less than 0.9 W for the Package B option as measured by the INA228. Quick measurements show about 8.1kWh/yr for Package A and 7.3kWh/yr for Package B. In Texas that is less than $1 per year.
