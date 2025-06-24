@@ -15,10 +15,10 @@ sensor:
       id: voc
       filters:
         - filter_out: NAN
-        - throttle_average: ${sgp4x_output_rate}
+        - throttle_average: 60s
     nox:
       name: "NOx"
       id: nox
       filters:
         - filter_out: NAN
-        - throttle_average: ${sgp4x_output_rate}
+        - throttle_average: 60s

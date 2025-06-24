@@ -63,7 +63,7 @@ sensor:
         - skip_initial: 300
         - filter_out: NAN
         - offset: ${sen6x_temperature_offset}
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     humidity:
       name: "Humidity"
       id: humidity
@@ -72,7 +72,7 @@ sensor:
         - skip_initial: 300
         - filter_out: NAN
         - offset: ${sen6x_humidity_offset}
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     pm_1_0:
       name: "PM <1µm Weight concentration"
       id: pm_1_0
@@ -80,7 +80,7 @@ sensor:
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     pm_2_5:
       name: "PM <2.5µm Weight concentration"
       id: pm_2_5
@@ -88,7 +88,7 @@ sensor:
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     pm_4_0:
       name: "PM <4µm Weight concentration"
       id: pm_4_0
@@ -96,7 +96,7 @@ sensor:
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     pm_10_0:
       name: "PM <10µm Weight concentration"
       id: pm_10_0
@@ -104,7 +104,7 @@ sensor:
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     co2:
       name: "CO₂"
       auto_self_calibration: false
@@ -112,18 +112,18 @@ sensor:
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     nox:
       name: "NOx"
       accuracy_decimals: 0
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s
     voc:
       name: "VOC"
       accuracy_decimals: 0
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - throttle_average: ${sen6x_output_rate}
+        - throttle_average: 60s

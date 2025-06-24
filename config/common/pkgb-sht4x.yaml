@@ -14,7 +14,7 @@ sensor:
       filters:
         - offset: ${sht4x_temperature_offset}
         - filter_out: NAN
-        - throttle_average: ${sht4x_output_rate}
+        - throttle_average: 60s
         - median:
             window_size: 5
             send_every: 1
@@ -25,7 +25,7 @@ sensor:
       filters:
         - offset: ${sht4x_humidity_offset}
         - filter_out: NAN
-        - throttle_average: ${sht4x_output_rate}
+        - throttle_average: 60s
   - platform: copy
     id: humidity
     name: "Humidity"
