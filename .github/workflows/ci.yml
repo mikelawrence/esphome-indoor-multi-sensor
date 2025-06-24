@@ -34,9 +34,10 @@ jobs:
           - sensor-pkg-b-ld2450-mtmz-esp32-s3
           - sensor-pkg-b-ld2450-stsz-esp32-s3
         #### Modify above here to match your project ####
-
-        esphome-version: latest
-
+        esphome-version: 
+          - stable
+          # - beta
+          # - dev
 
     steps:
       - name: Checkout source code
