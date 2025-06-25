@@ -6,7 +6,7 @@ substitutions:
   use_pir_in_presence: "true"
   # Status LED Configuration
   status_day_brightness: "0.5"
-  status_night_brightness: "0.20"
+  status_night_brightness: "0.15"
   status_daytime_lux: "12.0"
   status_nighttime_lux: "7.0"
   # CO Configuration
@@ -14,20 +14,14 @@ substitutions:
   co_offset: "0.0"
   co_sensitivity: "2.000e-9"
   co_manufacture_date: "Unknown"
-  co_serial_number: "111111111111111111"
+  co_serial_number: "Unknown"
   # SHT4x Configuration
   sht4x_temperature_offset: "0.0"
   sht4x_humidity_offset: "0.0"
-  sht4x_output_rate: "60s"
   # SCD4X Configuration
-  scd4x_output_rate: "60s"
   scd4x_co2_calibration_date: "Unknown"
-  # SGP4X Configuration
-  sgp4x_output_rate: "60s"
-  # INA2XX Configuration
-  INA2XX_output_rate: "60s"
   # Automatically controlled Vent
-  vent_ha_entity: fan.vent_id
+  vent_ha_entity: "fan.vent_id"
   vent_use_humidity: "true"
   vent_use_co2: "true"
   vent_min_on_time: "15"
