@@ -12,7 +12,7 @@ sensor:
       name: "Temperature"
       accuracy_decimals: 2
       filters:
-        - offset: ${sht4x_temperature_offset}
+        - offset: ${temperature_offset}
         - filter_out: NAN
         - throttle_average: 60s
         - median:
@@ -23,7 +23,7 @@ sensor:
       id: humidity_internal
       accuracy_decimals: 2
       filters:
-        - offset: ${sht4x_humidity_offset}
+        - offset: ${humidity_offset}
         - filter_out: NAN
         - throttle_average: 60s
   - platform: copy

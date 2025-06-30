@@ -2,6 +2,13 @@
 #   Adds SCD41 sensors:
 #     Carbon Dioxide (CO₂)
 #   Not compatible with PACKAGE A package
+esphome:
+  on_boot:
+    then:
+      - text_sensor.template.publish:
+          id: co2_calibration_date
+          state: ${co2_calibration_date}
+
 sensor:
   - platform: scd4x
     id: scd41_sensor
@@ -42,3 +49,12 @@ button:
             // ESP_LOGD("scd4x", "CO₂ Calibration executed, CO₂=%0.0f", value);
             return value;
           id: scd41_sensor
+
+text_sensor:
+  - platform: template
+    name: "CO₂ Calibration Date"
+    id: co2_calibration_date
+    entity_category: diagnostic
+    update_interval: never
+    lambda: |-
+      return {""};

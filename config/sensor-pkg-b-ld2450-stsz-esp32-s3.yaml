@@ -1,6 +1,6 @@
 substitutions:
-  name: "sensor-pkg-a-ld2450-mtmz"
-  friendly_name: "Indoor Multi-Sensor Pkg A Radar LD2450 MTMZ"
+  name: "sensor-pkg-b-ld2450-stsz"
+  friendly_name: "Indoor Multi-Sensor Pkg B Radar LD2450 STSZ"
 
   # Settings
   use_pir_in_presence: "true"
@@ -14,13 +14,15 @@ substitutions:
   co_offset: "0.0"
   co_sensitivity: "2.000e-9"
   co_manufacture_date: "Unknown"
-  co_serial_number: "Unknown"
-  # SEN6X Configuration
-  sen6x_temperature_offset: "0.0"
-  sen6x_humidity_offset: "0.0"
-  sen6x_co2_calibration_date: "Unknown"
+  co_serial_number: "111111111111111111"
+  # Temperature Configuration
+  temperature_offset: "0.0"
+  # Humidity Configuration
+  humidity_offset: "0.0"
+  # CO₂ Configuration
+  co2_calibration_date: "Unknown"
   # Automatically controlled Vent
-  vent_ha_entity: "fan.vent_id"
+  vent_ha_entity: fan.vent_id
   vent_use_humidity: "true"
   vent_use_co2: "true"
   vent_min_on_time: "15"
@@ -31,12 +33,14 @@ substitutions:
 
 packages:
   remote_package_files:
-    url: https://github.com/mikelawrence/ESPHome-Indoor-Multi-Sensor
+    url: https://github.com/mikelawrence/esphome-indoor-multi-sensor
     refresh: 1h
     files:
       # Main Config Files
-      - config/common/pkga-sen6x.yaml
-      - config/common/radar-ld2450ml-mtmz.yaml
+      - config/common/pkgb-sht4x.yaml
+      - config/common/pkgb-scd4x.yaml
+      - config/common/pkgb-sgp4x.yaml
+      - config/common/radar-ld2450ml-stsz.yaml
 
       # ADDITIONAL SENSORS
       # Carbon Dioxide (CO) - Figaro TGS5141 sensor
@@ -52,14 +56,14 @@ packages:
 
       # FEATURES
       # SEN6X Pressure Compensation - Adds pressure compensation to SEN6X
-      - config/common/feat-sen6x-press-comp.yaml
+      - config/common/feat-scd4x-press-comp.yaml
       # Automatic Vent - Use humidity and CO₂ control a bathroom vent
       # - config/common/feat-auto-vent.yaml
 
 # Add custom components
 external_components:
   - source: github://mikelawrence/esphome-components
-    components: [ld2450, sen5x, bmp581]
+    components: [ld2450, bmp581]
 
 esphome:
   name: ${name}
@@ -252,7 +256,7 @@ media_player:
       num_channels: 1
     files:
       - id: co_alarm_sound
-        file: https://github.com/mikelawrence/ESPHome-Indoor-Multi-Sensor/raw/refs/heads/main/config/media/CO-alarm-message.mp3
+        file: https://github.com/mikelawrence/esphome-indoor-multi-sensor/raw/refs/heads/main/config/media/CO-alarm-message.mp3
 
 sensor:
   - platform: debug

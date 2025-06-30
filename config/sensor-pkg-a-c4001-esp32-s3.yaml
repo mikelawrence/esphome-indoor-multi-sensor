@@ -1,6 +1,6 @@
 substitutions:
-  name: "sensor-pkg-a-ld2410"
-  friendly_name: "Indoor Multi-Sensor Pkg A Radar LD2410"
+  name: "sensor-pkg-a-c4001"
+  friendly_name: "Indoor Multi-Sensor Pkg A Radar C4001"
 
   # Settings
   use_pir_in_presence: "true"
@@ -14,13 +14,15 @@ substitutions:
   co_offset: "0.0"
   co_sensitivity: "2.000e-9"
   co_manufacture_date: "Unknown"
-  co_serial_number: "Unknown"
-  # SEN6X Configuration
-  sen6x_temperature_offset: "0.0"
-  sen6x_humidity_offset: "0.0"
-  sen6x_co2_calibration_date: "Unknown"
+  co_serial_number: "111111111111111111"
+  # Temperature Configuration
+  temperature_offset: "0.0"
+  # Humidity Configuration
+  humidity_offset: "0.0"
+  # CO₂ Configuration
+  co2_calibration_date: "Unknown"
   # Automatically controlled Vent
-  vent_ha_entity: "fan.vent_id"
+  vent_ha_entity: fan.vent_id
   vent_use_humidity: "true"
   vent_use_co2: "true"
   vent_min_on_time: "15"
@@ -31,17 +33,17 @@ substitutions:
 
 packages:
   remote_package_files:
-    url: https://github.com/mikelawrence/ESPHome-Indoor-Multi-Sensor
+    url: https://github.com/mikelawrence/esphome-indoor-multi-sensor
     refresh: 1h
     files:
       # Main Config Files
       - config/common/pkga-sen6x.yaml
-      - config/common/radar-ld2410.yaml
+      - config/common/radar-c4001.yaml
 
       # ADDITIONAL SENSORS
       # Carbon Dioxide (CO) - Figaro TGS5141 sensor
       - config/common/add-co.yaml
-      # Energy Usage - INA2XX sensor to measure Voltage, Power and Energy Usage
+      # Energy Usage - INA2XX sensor to measure  Voltage, Power and Energy Usage
       - config/common/add-ina2xx.yaml
       # Light Level - TSL2591 sensor
       - config/common/add-tsl2591.yaml
@@ -59,7 +61,7 @@ packages:
 # Add custom components
 external_components:
   - source: github://mikelawrence/esphome-components
-    components: [sen5x, bmp581]
+    components: [dfrobot_c4001, sen5x, bmp581]
 
 esphome:
   name: ${name}
@@ -252,7 +254,7 @@ media_player:
       num_channels: 1
     files:
       - id: co_alarm_sound
-        file: https://github.com/mikelawrence/ESPHome-Indoor-Multi-Sensor/raw/refs/heads/main/config/media/CO-alarm-message.mp3
+        file: https://github.com/mikelawrence/esphome-indoor-multi-sensor/raw/refs/heads/main/config/media/CO-alarm-message.mp3
 
 sensor:
   - platform: debug
