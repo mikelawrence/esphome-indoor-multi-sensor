@@ -3,7 +3,7 @@ name: Publish Firmware
 on:
   workflow_run:
     workflows:
-      - Release
+      - Create Release
     types: [completed]
   workflow_dispatch:
 
