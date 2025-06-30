@@ -9,9 +9,9 @@ sensor:
     id: tsl2591_sensor
     i2c_id: i2c1_bus
     update_interval: 1s
-    gain: auto
+    gain: low
     device_factor: 53
-    glass_attenuation_factor: 14.4
+    integration_time: 500ms
     calculated_lux:
       id: lux
       name: "Lux"
