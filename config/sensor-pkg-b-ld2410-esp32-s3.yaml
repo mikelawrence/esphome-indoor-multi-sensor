@@ -63,7 +63,7 @@ packages:
 # Add custom components
 external_components:
   - source: github://mikelawrence/esphome-components
-    components: [bmp581]
+    components: [bmp581, tsl2591]
 
 esphome:
   name: ${name}
