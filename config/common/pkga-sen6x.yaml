@@ -4,6 +4,13 @@
 #     Volatile Organic Compounds (VOC), Nitrous Oxides (NOx) and
 #     Particulate Matter (PM)
 #   Not compatible with PACKAGE B packages
+esphome:
+  on_boot:
+    then:
+      - text_sensor.template.publish:
+          id: co2_calibration_date
+          state: ${co2_calibration_date}
+
 i2c:
   - id: i2c2_bus
     sda: GPIO43
@@ -62,7 +69,7 @@ sensor:
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - offset: ${sen6x_temperature_offset}
+        - offset: ${temperature_offset}
         - throttle_average: 60s
     humidity:
       name: "Humidity"
@@ -71,7 +78,7 @@ sensor:
       filters:
         - skip_initial: 300
         - filter_out: NAN
-        - offset: ${sen6x_humidity_offset}
+        - offset: ${humidity_offset}
         - throttle_average: 60s
     pm_1_0:
       name: "PM <1µm Weight concentration"
@@ -127,3 +134,12 @@ sensor:
         - skip_initial: 300
         - filter_out: NAN
         - throttle_average: 60s
+
+text_sensor:
+  - platform: template
+    name: "CO₂ Calibration Date"
+    id: co2_calibration_date
+    entity_category: diagnostic
+    update_interval: never
+    lambda: |-
+      return {""};
