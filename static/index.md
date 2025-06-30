@@ -23,10 +23,12 @@ Use the buttons below to install pre-built firmware directly to your device via 
 
 ## Configuration
 
-When you take control there are two sections you need to configure. In the ```substitutions:``` section you will find settings for many of the available sensors. Note: All Substitutions are strings even if the represent numbers.
+When you take control there are two sections you need to configure. In the ```substitutions:``` section you will find settings for many of the available sensors. Note: in yaml all substitutions are strings and should be in ```'single quotes'``` or  ```"double quotes"``` but the value may be interpreted as a float or a boolean value.
 
 ```yaml
 substitutions:
+  name: "sensor-pkg-a-c4001"
+  friendly_name: "Indoor Multi-Sensor Pkg A Radar C4001"
 
   # Settings
   use_pir_in_presence: "true"
@@ -35,18 +37,20 @@ substitutions:
   status_night_brightness: "0.20"
   status_daytime_lux: "12.0"
   status_nighttime_lux: "7.0"
+  # Temperature Configuration
+  temperature_offset: "0.0"
+  # Humidity Configuration
+  humidity_offset: "0.0"
+  # CO₂ Configuration
+  co2_calibration_date: "Unknown"
   # CO Configuration
   co_temp_id: "temperature"
   co_offset: "0.0"
   co_sensitivity: "2.000e-9"
   co_manufacture_date: "Unknown"
-  co_serial_number: "Unknown"
-  # SEN6X Configuration
-  sen6x_temperature_offset: "0.0"
-  sen6x_humidity_offset: "0.0"
-  sen6x_co2_calibration_date: "Unknown"
+  co_serial_number: "111111111111111111"
   # Automatically controlled Vent
-  vent_ha_entity: "fan.vent_id"
+  vent_ha_entity: fan.vent_id
   vent_use_humidity: "true"
   vent_use_co2: "true"
   vent_min_on_time: "15"
@@ -61,7 +65,7 @@ The ```packages:``` section will allow you to disable sensors by commenting out 
 ```yaml
 packages:
   remote_package_files:
-    url: https://github.com/mikelawrence/ESPHome-Indoor-Multi-Sensor
+    url: https://github.com/mikelawrence/esphome-indoor-multi-sensor
     refresh: 1h
     files:
       # Main Config Files
@@ -86,69 +90,28 @@ packages:
       # Automatic Vent - Use humidity and CO₂ control a bathroom vent
       - config/common/feat-auto-vent.yaml
 ```
-
-### Sensor Package A Configuration
-
-```yaml
-      # Main Config Files
-      - config/common/pkga-sen6x.yaml
-```
+### Settings
 
 ```yaml
-  # SEN6X Configuration
-  sen6x_temperature_offset: "0.0"
-  sen6x_humidity_offset: "0.0"
-  sen6x_co2_calibration_date: "Unknown"
-```
-
-Sensor Package B sensor are all in one package with one interface.
-
-+ **sen6x_temperature_offset** (*Required*, float):  The SEN66 temperature sensor will have a offset. Use this to subtract out this error. Default is 0.0.
-+ **sen6x_humidity_offset** (*Required*, float): The SEN66 humidity sensor will have a offset. Use this to subtract out this error. Default is 0.0.
-+ **sen6x_co2_calibration_date** (*Required*, string): The date the when the SEN66 CO₂ sensor was last calibrated. Periodic calibration is recommended.
-
-### Sensor Package B Configuration
-
-```yaml
-      # Main Config Files
-      - config/common/pkgb-sht4x.yaml
-      - config/common/pkgb-scd4x.yaml
-      - config/common/pkgb-sgp4x.yaml
-```
-
-```yaml
-  # SHT4x Configuration
-  sht4x_temperature_offset: "0.0"
-  sht4x_humidity_offset: "0.0"
-  # SCD4X Configuration
-  scd4x_co2_calibration_date: "Unknown"
-```
-Sensor Package B is actually several sensor used together.
-
-+ **sht4x_temperature_offset** (*Required*, float):  The SHT4X temperature sensor will have a offset. Use this to subtract out this error. Default is 0.0.
-+ **sht4x_humidity_offset** (*Required*, float): The SHT4X humidity sensor will have a offset. Use this to subtract out this error. Default is 0.0.
-+ **scd4x_co2_calibration_date** (*Required*, string): The date the when the SCD4X CO₂ sensor was last calibrated. Periodic calibration is recommended.
-
-### Settings Substitutions
-
-```yaml
-substitutions:
   # Settings
   use_pir_in_presence: "true"
   # Status LED Configuration
   status_day_brightness: "0.5"
-  status_night_brightness: "0.15"
+  status_night_brightness: "0.20"
   status_daytime_lux: "12.0"
   status_nighttime_lux: "7.0"
 ```
 
 These are base sensor settings available for any configuration.
 
-+ **use_pir_in_presence** (*Required*, bool): When ```true``` the PIR sensor is or'ed with the mmWave presence sensor. Default is ```true```.
-+ **status_day_brightness** (*Required*, float): The brightness of the Status LED when the room is bright enough to be considered daytime. A number from 0.0 - 1.0, where 1.0 is full brightness. Default is 0.5.
-+ **status_night_brightness** (*Required*, float): The brightness of the Status LED during daytime hours. A number from 0.0 - 1.0, where 1.0 is full brightness. Default is 0.15.
-+ **status_daytime_lux** (*Required*, float):  The light level in lux where Status LED switches to nighttime. Default is "12.0"
-+ **status_nighttime_lux** (*Required*, float): The light level in lux where Status LED switches to daytime.
++ **use_pir_in_presence** (bool): You can disable the PIR motion detection from the presence sensor.
++ **status_day_brightness** (float): How bright is the Status LED during the day. Range is 0 to 1.0 where 1.0 means 100% brightness.
++ **status_night_brightness** (float): How bright is the Status LED during at night. Range is 0 to 1.0 where 1.0 means 100% brightness.
++ **status_daytime_lux** (float): The light level (lux) at which the Status LED will switch to daytime mode.
++ **status_nighttime_lux** (float): The light level (lux) at which the Status LED will switch to nighttime mode.
++ **temperature_offset** (float): The temperature sensor may have an offset due to environmental conditions. Use this to subtract out this error.
++ **humidity_offset** (float): The humidity sensor may have also have an offset. Use this to subtract out this error.
++ **co2_calibration_date** (string): Enter the last time the CO₂ was calibrated here and it will be reported as a text_sensor in the diagnostic section.
 
 ### Carbon Monoxide(CO) Configuration
 
@@ -160,7 +123,6 @@ These are base sensor settings available for any configuration.
 If you have included this package the CO sensor is enabled and there are substitutions you need to edit.
 
 ```yaml
-substitutions:
   # CO Configuration
   co_temp_id: "temperature"
   co_offset: "0.0"
@@ -169,24 +131,24 @@ substitutions:
   co_serial_number: "111111111111111111"
 ```
 
-+ **co_temp_id** (*Required*, ID): The accuracy of the CO sensor is improved with temperature compensation. This is the id of the temperature sensor to use.
-+ **co_offset** (*Required*, float): The CO sensor and circuit will have a offset. Use this to subtract out this sensor. Default is 0.0.
-+ **co_sensitivity** (*Required*, float): The CO has a default sensitivity ot 2.000e-9A per CO ppm. There is a QR code on the sensor that reports the factory measured sensitivity.
-+ **co_manufacture_date** (*Required*, string): Sensor manufacture date from the QR code on the sensor. The sensor has a 10 year life expectancy.
-+ **co_serial_number** (*Required*, string): Sensor serial number from the QR code on the sensor. Not necessary but might come in handy down the road.
++ **co_temp_id** (ID): The accuracy of the CO sensor is improved with temperature compensation. This is the entity id of the temperature sensor to use.
++ **co_offset** (float): The CO sensor and circuit will have a offset. Use this to subtract out this error.
++ **co_sensitivity** (float): The CO has a default sensitivity of 2.000e-9 Amps/ppm. This should be the factory measured sensitivity as reported in the QR code on the sensor.
++ **co_manufacture_date** (float): From the QR code on the sensor. The sensor has a 10 year life expectancy. Reported as a text_sensor in the diagnostic section.
++ **co_serial_number** (float): From the QR code on the sensor. Not necessary but might come in handy down the road. Reported as a text_sensor in the diagnostic section.
 
-You can keep the default sensitivity but it would be better to scan the barcode and use the factory measured sensitivity. The [datasheet](https://github.com/mikelawrence/ESPHome-Indoor-Multi-Sensor/blob/main/pcb/datasheets/TGS5141%20CO%20Sensor/tgs5xxx_application%20note(en)_rev01.pdf) has information on the barcode and how to parse.
-
-### Carbon Monoxide(CO) Configuration
+### Automatically controlled Vent Configuration
 
 ```yaml
       # Automatic Vent - Use humidity and CO₂ control a bathroom vent
       - config/common/feat-auto-vent.yaml
 ```
 
+If you have included this package the CO sensor is enabled and there are substitutions you need to edit.
+
 ```yaml
   # Automatically controlled Vent
-  vent_ha_entity: "fan.vent_id"
+  vent_ha_entity: fan.vent_id
   vent_use_humidity: "true"
   vent_use_co2: "true"
   vent_min_on_time: "15"
@@ -196,13 +158,11 @@ You can keep the default sensitivity but it would be better to scan the barcode 
   vent_co2_off_trigger: "900"
 ```
 
-Humidity and CO₂ can automatically control a bathroom vent.
-
-+ **vent_ha_entity** (*Required*, ID): This is the Home Assistant fan or switch ```id``` that controls the bathroom vent.
-+ **vent_use_humidity** (*Required*, bool): When ```true``` humidity is used to automatically turn the vent on/off. Default is ```true```.
-+ **vent_use_co2** (*Required*, bool): When ```true``` CO₂ is used to automatically turn the vent on/off. Default is ```true```.
-+ **vent_min_on_time** (*Required*, float): When the vent was turned on automatically by high humidity or CO₂ this is how long the vent will stay on after humidity or CO₂ is back to normal. Default is 15.
-+ **vent_hum_on_trigger** (*Required*, ID): Humidity change from baseline that will turn the vent on. Must be a positive number. Default is 10.0%.
-+ **vent_hum_off_trigger** (*Required*, ID): Humidity difference from baseline that will indicate the end of high humidity. In general this is less than "vent_hum_on_trigger". Sometimes humidity from a shower just doesn't want to get back to where it was. If you make this number zero or less you might cause the vent to stay on. Default is 2.5%.
-+ **vent_co2_on_trigger** (*Required*, ID): The level of CO₂ that will automatically turn the vent on. Default is 1100.
-+ **vent_co2_off_trigger** (*Required*, ID): The level of CO₂ that will automatically turn the vent off. Should be 100-200 points less than the "vent_co2_on_trigger". Default is 900 ppm.
++ **vent_ha_entity** (ID): This is the Home Assistant entity id of automatically controlled vent.
++ **vent_use_humidity** (bool): Enable humidity based control of the vent by setting this to ```true```.
++ **vent_use_co2** (bool): Enable CO₂ based control of the vent by setting this to ```true```.
++ **vent_min_on_time** (integer): This is the minimum on time for a vent for manual mode and how long the vent will stay on after the humidity or CO₂ returns to normal.
++ **vent_hum_on_trigger** (integer): This is the humidity level (%) rise from baseline that will turn on the vent. Baseline here is a fast exponential average (15 minutes). Showers usually have a sharp rise in humidity when first starting so a value of 10% rise in a few minutes is definitely a shower starting.
++ **vent_hum_off_trigger** (integer): This is the humidity level (%) from baseline that will turn off the vent. Baseline here is a slow exponential average (6ish hours). You want this number slightly above zero because sometimes the humidity level doesn't go back to where it was before a shower occurred quick enough. And even though the baseline average will eventually get there and cut off the vent it will have been on for hours.
++ **vent_co2_on_trigger** (integer): This is the CO₂ level that will cause the vent to turn on. Make 100-200 higher than ```vent_co2_off_trigger``` to give the vent a bit of hysteresis.
++ **vent_co2_off_trigger** (integer): This is the CO₂ level that will cause the vent to turn off.
