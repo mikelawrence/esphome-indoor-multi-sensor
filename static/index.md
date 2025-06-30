@@ -1,10 +1,10 @@
 # About
 
-You need to make some choices before programming the ESPHome Indoor Multi-Sensor. 
+You need to make two choices before programming the ESPHome Indoor Multi-Sensor. 
 
 First is the Sensor package. You can either choose Package A, the Sensirion SEN6X sensor package which is an all-in-one sensor package. Or you can choose Package B which is a lower cost discrete sensor set that is missing particulate matter sensors. 
 
-Next up is what type of radar sensor you plan on including. There are 4 choices here, Hi Link LD2410 (My favorite), DFRobot C4001 (SEN0609 and SEN0610), Hi-Link LD2450 Multi-Target Multi-Zone (MTMZ) and the Hi-Link LD2450 Single-Target Single-Zone (STSZ). 
+Next up is what type of radar sensor you plan on including. There are 4 options here, Hi Link LD2410 (My favorite), DFRobot C4001 (SEN0609 and SEN0610), Hi-Link LD2450 Multi-Target Multi-Zone (MTMZ) and the Hi-Link LD2450 Single-Target Single-Zone (STSZ). 
 
 Each of these these builds include all supported sensors: pressure, light, sound level, power/energy monitor and speaker. If there are sensors you wish to not include, take control of the sensor and start configuring.
 
