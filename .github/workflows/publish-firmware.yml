@@ -1,40 +1,63 @@
 name: Publish Firmware
 
 on:
-  release:
-    types: [published]
+  workflow_run:
+    workflows:
+      - Release
+    types: [completed]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build-firmware:
+  getReleaseInfo:
+    name: Get Release Info
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Latest Release
+        id: getLatestRelease
+        uses: cardinalby/git-get-release-action@1.2.4
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          latest: true
+    outputs:
+      summary: ${{ steps.getLatestRelease.outputs.body }}
+      url: ${{ steps.getLatestRelease.outputs.html_url }}
+      version: ${{ steps.getLatestRelease.outputs.tag_name }}
+
+  buildFirmware:
     name: Build Firmware
     uses: esphome/workflows/.github/workflows/build.yml@2025.4.0
+    needs:
+      - getReleaseInfo
     with:
-      #### Modify below here to match your project ####
       files: |
-        config/sensor-pkg-a-c4001.factory.yaml
-        config/sensor-pkg-a-ld2410.factory.yaml
-        config/sensor-pkg-a-ld2450-mtmz.factory.yaml
-        config/sensor-pkg-a-ld2450-stsz.factory.yaml
-        config/sensor-pkg-b-c4001.factory.yaml
-        config/sensor-pkg-b-ld2410.factory.yaml
-        config/sensor-pkg-b-ld2450-mtmz.factory.yaml
-        config/sensor-pkg-b-ld2450-stsz.factory.yaml
-
+        config/sensor-pkg-a-c4001-esp32-s3.factory.yaml
+        config/sensor-pkg-a-ld2410-esp32-s3.factory.yaml
+        config/sensor-pkg-a-ld2450-mtmz-esp32-s3.factory.yaml
+        config/sensor-pkg-a-ld2450-stsz-esp32-s3.factory.yaml
+        config/sensor-pkg-b-c4001-esp32-s3.factory.yaml
+        config/sensor-pkg-b-ld2410-esp32-s3.factory.yaml
+        config/sensor-pkg-b-ld2450-mtmz-esp32-s3.factory.yaml
+        config/sensor-pkg-b-ld2450-stsz-esp32-s3.factory.yaml
       esphome-version: latest
       # combined-name: project-template
-      #### Modify above here to match your project ####
+      release-summary: ${{ needs.getReleaseInfo.outputs.summary }}
+      release-url: ${{ needs.getReleaseInfo.outputs.url }}
+      release-version: ${{ needs.getReleaseInfo.outputs.version }}
 
-      release-summary: ${{ github.event.release.body }}
-      release-url: ${{ github.event.release.html_url }}
-      release-version: ${{ github.event.release.tag_name }}
-
-  upload-to-release:
-    name: Upload to Release
+  upload_firmware_to_release:
+    name: Upload Firmware to Release
     uses: esphome/workflows/.github/workflows/upload-to-gh-release.yml@2025.4.0
     needs:
-      - build-firmware
+      - getReleaseInfo
+      - buildFirmware
     with:
-      version: ${{ github.event.release.tag_name }}
+      version: ${{ needs.getReleaseInfo.outputs.version }}
