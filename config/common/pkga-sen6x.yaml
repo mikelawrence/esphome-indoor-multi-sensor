@@ -6,10 +6,11 @@
 #   Not compatible with PACKAGE B packages
 esphome:
   on_boot:
-    then:
-      - text_sensor.template.publish:
-          id: co2_calibration_date
-          state: ${co2_calibration_date}
+    - priority: -100
+      then:
+        - text_sensor.template.publish:
+            id: co2_calibration_date
+            state: ${co2_calibration_date}
 
 i2c:
   - id: i2c2_bus
@@ -114,7 +115,7 @@ sensor:
         - throttle_average: 60s
     co2:
       name: "CO₂"
-      auto_self_calibration: false
+      automatic_self_calibration: false
       accuracy_decimals: 0
       filters:
         - skip_initial: 300

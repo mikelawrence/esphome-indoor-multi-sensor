@@ -1,4 +1,4 @@
-# About
+# ESPHome Indoor Multi-Sensor
 
 You need to make two choices before programming the ESPHome Indoor Multi-Sensor. 
 
