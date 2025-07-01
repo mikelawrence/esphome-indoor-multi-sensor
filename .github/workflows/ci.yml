@@ -38,7 +38,15 @@ jobs:
           # - dev
     steps:
       - name: Checkout source code
+        if:  ${{ github.ref_name == '' }}
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: Checkout source code
+        if:  ${{ github.ref_name != '' }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
       - name: ESPHome ${{ matrix.esphome-version }}
         uses: esphome/build-action@v7
         with:
