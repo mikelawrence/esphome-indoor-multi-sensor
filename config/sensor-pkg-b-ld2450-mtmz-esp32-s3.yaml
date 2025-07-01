@@ -13,14 +13,14 @@ substitutions:
   co_temp_id: "temperature"
   co_offset: "0.0"
   co_sensitivity: "2.000e-9"
-  co_manufacture_date: "Unknown"
+  co_manufacture_date: "Not Set"
   co_serial_number: "111111111111111111"
   # Temperature Configuration
   temperature_offset: "0.0"
   # Humidity Configuration
   humidity_offset: "0.0"
   # CO₂ Configuration
-  co2_calibration_date: "Unknown"
+  co2_calibration_date: "Not Set"
   # Automatically controlled Vent
   vent_ha_entity: fan.vent_id
   vent_use_humidity: "true"
