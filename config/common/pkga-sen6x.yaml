@@ -115,6 +115,7 @@ sensor:
         - throttle_average: 60s
     co2:
       name: "CO₂"
+      id: co2
       automatic_self_calibration: false
       accuracy_decimals: 0
       filters:
@@ -123,6 +124,7 @@ sensor:
         - throttle_average: 60s
     nox:
       name: "NOx"
+      id: nox
       accuracy_decimals: 0
       filters:
         - skip_initial: 300
@@ -130,6 +132,7 @@ sensor:
         - throttle_average: 60s
     voc:
       name: "VOC"
+      id: voc
       accuracy_decimals: 0
       filters:
         - skip_initial: 300
