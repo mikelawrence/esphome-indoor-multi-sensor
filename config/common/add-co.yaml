@@ -1,6 +1,6 @@
 # Adds CO sensor using the Figaro TGS5141
-esphome:
-  on_boot:
+api:
+  on_client_connected:
     then:
       - text_sensor.template.publish:
           id: co_serial_number
