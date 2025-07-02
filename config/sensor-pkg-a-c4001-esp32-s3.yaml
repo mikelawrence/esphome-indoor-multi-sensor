@@ -34,6 +34,7 @@ substitutions:
 packages:
   remote_package_files:
     url: https://github.com/mikelawrence/esphome-indoor-multi-sensor
+    # ref: dev
     refresh: 1h
     files:
       # Main Config Files
@@ -60,7 +61,11 @@ packages:
 
 # Add custom components
 external_components:
-  - source: github://mikelawrence/esphome-components
+  - source:
+      type: git
+      url: https://github.com/mikelawrence/esphome-components
+      # ref: dev
+    refresh: 1h
     components: [dfrobot_c4001, sen5x, bmp581, tsl2591]
 
 esphome:
