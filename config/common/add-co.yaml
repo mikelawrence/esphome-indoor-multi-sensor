@@ -34,8 +34,6 @@ ads1115:
     i2c_id: i2c1_bus
     continuous_mode: false
 
-binary_sensor:
-  - platform
 sensor:
   - platform: ads1115
     id: co_sensor
