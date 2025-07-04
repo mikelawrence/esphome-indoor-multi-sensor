@@ -41,9 +41,6 @@ packages:
       - config/common/pkga-sen6x.yaml
       - config/common/radar-ld2410.yaml
 
-      - config/common/common.yaml
-      - config/common/add-speaker.yaml
-
       # ADDITIONAL SENSORS
       # Carbon Dioxide (CO) - Figaro TGS5141 sensor
       - config/common/add-co.yaml

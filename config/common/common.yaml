@@ -1,4 +1,5 @@
 # common setup for all devices
+
 esphome:
   name: ${name}
   friendly_name: ${friendly_name}
@@ -13,12 +14,61 @@ esphome:
         - light.turn_off:
             id: led_status
 
+# ESP32-S3-WROOM-2-N32R16V
+# should support 32MB, but doesn't seem to work
+esp32:
+  board: esp32s3box
+  variant: ESP32S3
+  flash_size: 16MB
+  cpu_frequency: 240MHz
+  framework:
+    type: esp-idf
+
+# This PSRAM can actually support faster than 80MHz
+psram:
+  mode: octal
+  speed: 80MHz
+
+# To be able to get logs from the device via serial and api
+logger:
+  id: logger_common
+  level: DEBUG
+
+# All but the SEN6X is on this bus
 i2c:
   - id: i2c1_bus
     sda: GPIO48
     scl: GPIO47
     frequency: 400kHz
     scan: true
+
+# WiFI AP, required when allowing user to provision WiFi credentials
+wifi:
+  ap:
+
+# Fallback when WiFi configuration fails
+# required when allowing user to provision WiFi credentials using WiFi
+captive_portal:
+
+# Allows user to provision WiFi credentials with Bluetooth using Improv standard
+esp32_improv:
+  authorizer: none
+
+# Allow user to provision WiFi credentials with USB port using Improv standard
+improv_serial:
+
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+
+bluetooth_proxy:
+  active: true
+
+debug:
+  update_interval: 60s
+
+web_server:
+  port: 80
 
 time:
   - platform: homeassistant

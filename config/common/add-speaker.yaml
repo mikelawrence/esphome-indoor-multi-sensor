@@ -25,7 +25,6 @@ media_player:
       - id: co_alarm_sound
         file: https://github.com/mikelawrence/esphome-indoor-multi-sensor/raw/refs/heads/main/config/media/CO-alarm-message.mp3
 
-
 speaker:
   - platform: i2s_audio
     id: speaker_id
