@@ -42,6 +42,12 @@ i2c:
     frequency: 400kHz
     scan: true
 
+# audio DAC for speaker
+i2s_audio:
+  - id: speaker_i2s
+    i2s_lrclk_pin: GPIO12
+    i2s_bclk_pin: GPIO11
+
 # WiFI AP, required when allowing user to provision WiFi credentials
 wifi:
   ap:
@@ -162,6 +168,23 @@ light:
     num_leds: 1
     chipset: ws2812
 
+media_player:
+  - platform: speaker
+    name: "Speaker Media Player"
+    id: speaker_media_player_id
+    media_pipeline:
+      speaker: media_spk_resampling_input
+      num_channels: 2
+    announcement_pipeline:
+      speaker: announcement_spk_resampling_input
+      num_channels: 1
+
+power_supply:
+  # Enable audio DAC Power
+  - id: dac_enable
+    pin: GPIO9
+    enable_on_boot: true
+
 sensor:
   - platform: debug
     free:
@@ -170,6 +193,28 @@ sensor:
       name: "Heap Max Block"
     loop_time:
       name: "Loop Time"
+
+speaker:
+  - platform: i2s_audio
+    id: speaker_id
+    i2s_audio_id: speaker_i2s
+    dac_type: external
+    i2s_dout_pin: GPIO10
+    sample_rate: 48000
+  - platform: mixer
+    id: mixer_speaker_id
+    output_speaker: speaker_id
+    source_speakers:
+      - id: announcement_spk_mixer_input
+      - id: media_spk_mixer_input
+  - platform: resampler
+    id: media_spk_resampling_input
+    output_speaker: media_spk_mixer_input
+    sample_rate: 48000
+  - platform: resampler
+    id: announcement_spk_resampling_input
+    output_speaker: announcement_spk_mixer_input
+    sample_rate: 48000
 
 switch:
   - platform: template
