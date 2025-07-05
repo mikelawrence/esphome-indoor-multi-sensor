@@ -38,6 +38,7 @@ packages:
     refresh: 1h
     files:
       # Main Config Files
+      - config/common/common.yaml
       - config/common/pkgb-sht4x.yaml
       - config/common/pkgb-scd4x.yaml
       - config/common/pkgb-sgp4x.yaml
