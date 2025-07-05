@@ -6,6 +6,7 @@ ignore: |
 
 rules:
   document-start: disable
+  comments-indentation: disable
   empty-lines:
     level: error
     max: 1
