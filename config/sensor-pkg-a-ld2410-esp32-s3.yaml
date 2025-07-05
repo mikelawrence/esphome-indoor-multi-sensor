@@ -67,7 +67,7 @@ external_components:
       # ref: dev
       url: https://github.com/mikelawrence/esphome-components
     refresh: 1h
-    components: [sen5x, bmp581]
+    components: [sen5x]
 
 # API is a requirement of the dashboard import.
 # Grab a key from https://esphome.io/components/api.html
