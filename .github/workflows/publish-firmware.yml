@@ -1,9 +1,9 @@
-name: Publish Firmware
+-rame: Publish Firmware
 
 on:
   workflow_run:
     workflows:
-      - Create Release
+      - Create Pre-release
     types: [completed]
   workflow_dispatch:
 
