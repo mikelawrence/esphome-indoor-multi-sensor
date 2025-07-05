@@ -1,6 +1,6 @@
 # Adds CO sensor using the Figaro TGS5141
-esphome:
-  on_boot:
+api:
+  on_client_connected:
     then:
       - text_sensor.template.publish:
           id: co_serial_number
@@ -22,7 +22,7 @@ globals:
     type: double[51]
     restore_value: false
     # Calibration factor based on temperature, see datasheet
-    initial_value: "{0.7835, 0.7944, 0.8053, 0.8162, 0.8271, 0.838, 0.8489,
+    initial_value: "{ 0.7835, 0.7944, 0.8053, 0.8162, 0.8271, 0.838, 0.8489,
       0.8598, 0.8707, 0.8816, 0.8925, 0.9034, 0.9143, 0.9252, 0.9361, 0.947,
       0.9579, 0.9688, 0.9797, 0.9906, 1, 1.0075, 1.015, 1.0225, 1.03, 1.0375,
       1.045, 1.0525, 1.06, 1.0675, 1.075, 1.0825, 1.09, 1.0975, 1.105, 1.1125,
@@ -33,6 +33,13 @@ ads1115:
   - address: 0x48
     i2c_id: i2c1_bus
     continuous_mode: false
+
+media_player:
+  - platform: speaker
+    id: !extend speaker_media_player_id
+    files:
+      - id: co_alarm_sound
+        file: https://github.com/mikelawrence/esphome-indoor-multi-sensor/raw/refs/heads/main/config/media/co-alarm-four-beep.flac
 
 sensor:
   - platform: ads1115
@@ -85,6 +92,33 @@ sensor:
       - or:
           - throttle: 60s
           - delta: 5.0
+  # Long'ish co average
+  - platform: copy
+    id: co_long_avg
+    source_id: co_sensor
+    unit_of_measurement: ppm
+    accuracy_decimals: 0
+    filters:
+      - lambda: |-
+          static bool first = true;
+          static float long_avg;
+          static float alpha = 0.003;
+          // handle initialization
+          if (first) {
+            if (!isnan(x)) {
+              long_avg = x;
+              first = false;
+              ESP_LOGD("auto_vent", "CO Long Average, alpha = %f", alpha);
+              return long_avg;
+            } else {
+              return x;
+            }
+          } else if (isnan(x)) {
+            return long_avg;
+          }
+          // compute Exponential Moving Average
+          long_avg = alpha * x + (1 - alpha) * long_avg;
+          return long_avg;
 
 text_sensor:
   - platform: template

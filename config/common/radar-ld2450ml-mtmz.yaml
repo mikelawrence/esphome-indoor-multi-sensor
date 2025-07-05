@@ -4,8 +4,8 @@
 #   Supports Installation Angle and Flip X Axis configuration
 #   Not compatible with any other radar package
 #   this sensor is mounted upside down target x and angle sensors are inverted
-esphome:
-  on_boot:
+api:
+  on_client_connected:
     then:
       - text_sensor.template.publish:
           id: radar_included
