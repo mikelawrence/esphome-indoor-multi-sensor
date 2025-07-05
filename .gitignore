@@ -31,6 +31,6 @@ fp-info-cache
 
 # Added by ML
 __pycache__/
-
+.venv
 
 */production/backups
