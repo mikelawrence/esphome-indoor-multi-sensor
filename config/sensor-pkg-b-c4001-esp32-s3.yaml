@@ -66,8 +66,8 @@ packages:
 external_components:
   - source:
       type: git
-      url: https://github.com/mikelawrence/esphome-components
       # ref: dev
+      url: https://github.com/mikelawrence/esphome-components
     refresh: 1h
     components: [dfrobot_c4001]
 
@@ -75,6 +75,7 @@ esphome:
 # API is a requirement of the dashboard import.
 # Grab a key from https://esphome.io/components/api.html
 api:
+# yamllint disable-line rule:comments-indentation
   # encryption:
   #   key:
 

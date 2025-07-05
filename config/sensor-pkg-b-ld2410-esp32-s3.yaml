@@ -65,6 +65,7 @@ packages:
 # API is a requirement of the dashboard import.
 # Grab a key from https://esphome.io/components/api.html
 api:
+# yamllint disable-line rule:comments-indentation
   # encryption:
   #   key:
 

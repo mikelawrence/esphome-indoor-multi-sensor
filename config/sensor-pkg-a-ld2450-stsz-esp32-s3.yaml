@@ -64,14 +64,15 @@ packages:
 external_components:
   - source:
       type: git
-      url: https://github.com/mikelawrence/esphome-components
       # ref: dev
+      url: https://github.com/mikelawrence/esphome-components
     refresh: 1h
     components: [ld2450, sen5x]
 
 # API is a requirement of the dashboard import.
 # Grab a key from https://esphome.io/components/api.html
 api:
+# yamllint disable-line rule:comments-indentation
   # encryption:
   #   key:
 
