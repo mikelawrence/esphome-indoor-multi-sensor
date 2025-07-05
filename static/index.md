@@ -69,6 +69,7 @@ packages:
     refresh: 1h
     files:
       # Main Config Files
+      - config/common/common.yaml
       - config/common/pkga-sen6x.yaml
       - config/common/radar-c4001.yaml
 
