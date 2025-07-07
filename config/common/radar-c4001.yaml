@@ -32,7 +32,7 @@ button:
     config_save:
       name: C4001 Config Save
       entity_category: CONFIG
-    reset:
+    restart:
       name: C4001 Restart
       entity_category: CONFIG
 
