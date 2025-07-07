@@ -1,0 +1,13 @@
+sensor:
+  - id: !extend co
+
+
+script:
+  - id: update_alarm_status
+    mode: restart
+    then:
+      lambda: |-
+        static bool last_state;
+        bool state;
+
+        last_state = state;

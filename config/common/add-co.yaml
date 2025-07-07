@@ -43,7 +43,7 @@ media_player:
 
 sensor:
   - platform: ads1115
-    id: co_sensor
+    id: co
     name: "CO"
     state_class: measurement
     device_class: carbon_monoxide
@@ -92,34 +92,10 @@ sensor:
       - or:
           - throttle: 60s
           - delta: 5.0
-  # Long'ish co average
-  - platform: copy
-    id: co_long_avg
-    source_id: co_sensor
-    unit_of_measurement: ppm
-    accuracy_decimals: 0
-    filters:
-      - lambda: |-
-          static bool first = true;
-          static float long_avg;
-          static float alpha = 0.003;
-          // handle initialization
-          if (first) {
-            if (!isnan(x)) {
-              long_avg = x;
-              first = false;
-              ESP_LOGD("auto_vent", "CO Long Average, alpha = %f", alpha);
-              return long_avg;
-            } else {
-              return x;
-            }
-          } else if (isnan(x)) {
-            return long_avg;
-          }
-          // compute Exponential Moving Average
-          long_avg = alpha * x + (1 - alpha) * long_avg;
-          return long_avg;
-
+    on_value:
+      then:
+        script.execute: update_alarm_status
+        
 text_sensor:
   - platform: template
     name: "CO Serial Number"
