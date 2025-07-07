@@ -87,13 +87,6 @@ sensor:
         return {};
       }
 
-text_sensor:
-  - platform: dfrobot_c4001
-    software_version:
-      name: Software Version
-    hardware_version:
-      name: Hardware Version
-
 switch:
   - platform: dfrobot_c4001
     dfrobot_c4001_id: c4001_radar
@@ -101,6 +94,11 @@ switch:
       name: C4001 Enable LED
 
 text_sensor:
+  - platform: dfrobot_c4001
+    software_version:
+      name: Software Version
+    hardware_version:
+      name: Hardware Version
   - platform: template
     name: "Radar Included"
     id: radar_included
