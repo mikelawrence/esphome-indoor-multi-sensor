@@ -87,7 +87,7 @@ sensor:
         return {};
       }
 
-test_sensor:
+text_sensor:
   - platform: dfrobot_c4001
     software_version:
       name: Software Version
