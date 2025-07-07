@@ -92,9 +92,6 @@ sensor:
       - or:
           - throttle: 60s
           - delta: 5.0
-    on_value:
-      then:
-        script.execute: update_alarm_status
         
 text_sensor:
   - platform: template
